@@ -1,7 +1,6 @@
 # WHIP.NVIM
-> biew biew biew, a super quick scratchpad manager
+> quick scratchpad manager
 
-![whip logo](./asset/whip.png)
 
 ## INSTALL
 * use your favorite package manager to install `slugbyte/whip.nvim` and dependencies
@@ -64,5 +63,3 @@ Run `:checkhealth whip` to check for trouble with your configuration
 whip.nvim creates a `.whip.json` in your whip `dir` to keep track of
 your last selected file.
 
-## SELF-PROMO
-If you like this project star the GitHub repository :)
