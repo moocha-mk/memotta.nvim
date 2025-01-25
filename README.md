@@ -1,4 +1,4 @@
-# WHIP.NVIM
+# MEMOTTA.NVIM
 > quick scratchpad manager
 
 
@@ -11,7 +11,7 @@
 ```lua
 -- example lazy nvim config
 return {
-    "slugbyte/whip.nvim",
+    "moocha-mk/memotta.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
@@ -20,13 +20,13 @@ return {
         local whip = require("whip")
         whip.setup({
             -- its probs a good idea to have a dir dedicated to your scratchpads
-            dir = "~/your/whip/dir/goes-here"
+            dir =  vim.fn.expand("~/memotta/"),
         })
-        vim.keymap.set("", "<leader>wo", whip.open, { desc = "[W]hip [O]pen" })
-        vim.keymap.set("", "<leader>wm", whip.make, { desc = "[W]hip [M]ake" })
-        vim.keymap.set("", "<leader>wd", whip.drop, { desc = "[W]hip [D]rop" })
-        vim.keymap.set("", "<leader>wf", whip.find_file, { desc = "[W]hip [F]ile Search" })
-        vim.keymap.set("", "<leader>wg", whip.find_grep, { desc = "[W]hip [G]rep Search" })
+        vim.keymap.set("", "<leader>mo", whip.open, { desc = "[W]hip [O]pen" })
+        vim.keymap.set("", "<leader>mm", whip.make, { desc = "[W]hip [M]ake" })
+        vim.keymap.set("", "<leader>md", whip.drop, { desc = "[W]hip [D]rop" })
+        vim.keymap.set("", "<leader>mf", whip.find_file, { desc = "[W]hip [F]ile Search" })
+        vim.keymap.set("", "<leader>mg", whip.find_grep, { desc = "[W]hip [G]rep Search" })
     end,
 }
 ```
