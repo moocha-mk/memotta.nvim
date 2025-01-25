@@ -4,7 +4,7 @@
 
 ## INSTALL
 
-- use your favorite package manager to install `slugbyte/whip.nvim` and dependencies
+- use your favorite package manager to install `moocha-mk/memotta.nvim` and dependencies
   - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
   - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
