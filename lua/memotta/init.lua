@@ -25,7 +25,7 @@ local log_info = function(fmt, ...)
 end
 
 local log_error = function(fmt, ...)
-    local err_msg = "ERROR: whip.nvim " .. string.format(fmt, ...)
+    local err_msg = "ERROR: memotta.nvim " .. string.format(fmt, ...)
     vim.notify(err_msg, vim.log.levels.ERROR)
     return err_msg
 end
@@ -44,7 +44,7 @@ local telescope_check_ok = function()
         return false
     end
     if state.dir == nil then
-        log_error("error no whip dir")
+        log_error("error no memotta dir")
         return false
     end
     return true
@@ -93,19 +93,19 @@ local config_save = function()
     end
 end
 
-local current_whip_path = function()
+local current_memotta_path = function()
     if state.config_data == nil or state.config_data.current == nil then
         return nil
     end
     return string.format("%s/%s", state.dir, state.config_data.current)
 end
 
-local current_whip_check_exists = function()
-    local path = current_whip_path()
+local current_memotta_check_exists = function()
+    local path = current_memotta_path()
     if path == nil then
         return false
     end
-    return Path:new(current_whip_path()):exists()
+    return Path:new(current_memotta_path()):exists()
 end
 
 local current_set = function(current)
@@ -124,7 +124,7 @@ local dir_set = function(path)
         return
     end
     state.dir = dir_path:expand()
-    state.config_path = string.format("%s/.whip.json", state.dir)
+    state.config_path = string.format("%s/.memotta.json", state.dir)
 end
 
 M.find_file = function()
@@ -133,7 +133,7 @@ M.find_file = function()
     end
     ts_builtin.find_files({
         cwd = state.dir,
-        prompt_title = "Find whip",
+        prompt_title = "Find memotta",
         attach_mappings = function(prompt_bufnr, _)
             ts_actions.select_default:replace(function()
                 local selection = ts_action_state.get_selected_entry()
@@ -176,7 +176,7 @@ M.drop = function()
     end
     ts_builtin.find_files({
         cwd = state.dir,
-        prompt_title = "Delete whip",
+        prompt_title = "Delete memotta",
         attach_mappings = function(prompt_bufnr, _)
             ts_actions.select_default:replace(function()
                 local selection = ts_action_state.get_selected_entry()
@@ -206,17 +206,17 @@ end
 
 M.make = function()
     local input = vim.fn.input({
-        prompt = "create whip: ",
+        prompt = "create memotta: ",
     })
     current_set(input)
     vim.cmd(string.format("edit %s/%s", state.dir, input))
 end
 
 M.open = function()
-    if not current_whip_check_exists() then
+    if not current_memotta_check_exists() then
         return M.find_file()
     end
-    vim.cmd(string.format("edit %s", current_whip_path()))
+    vim.cmd(string.format("edit %s", current_memotta_path()))
 end
 
 M._get_state = function()
@@ -238,11 +238,11 @@ M.setup = function(opts)
         end
     end
 
-    vim.api.nvim_create_user_command("WhipOpen", M.open, {})
-    vim.api.nvim_create_user_command("WhipMake", M.make, {})
-    vim.api.nvim_create_user_command("WhipDrop", M.drop, {})
-    vim.api.nvim_create_user_command("WhipFindFile", M.find_file, {})
-    vim.api.nvim_create_user_command("WhipFindGrep", M.find_grep, {})
+    vim.api.nvim_create_user_command("MemottaOpen", M.open, {})
+    vim.api.nvim_create_user_command("MemottaMake", M.make, {})
+    vim.api.nvim_create_user_command("MeottaDrop", M.drop, {})
+    vim.api.nvim_create_user_command("MemottaFindFile", M.find_file, {})
+    vim.api.nvim_create_user_command("MemottaFindGrep", M.find_grep, {})
     state.health_data.is_setup = true
 end
 
